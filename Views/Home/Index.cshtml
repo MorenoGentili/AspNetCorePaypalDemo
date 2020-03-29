@@ -1,0 +1,21 @@
+﻿@model OrderCreateInputModel
+<form method="post" style="max-width: 230px;" onsubmit="this.querySelector('.btn').disabled=true">
+
+    <div class="form-group">
+        <label asp-for="OrderId"></label>
+        <input type="number" class="form-control" asp-for="OrderId">
+    </div>
+    <div class="form-group">
+        <label asp-for="Price"></label>
+        <div class="input-group">
+            <select asp-for="Price.Currency" class="form-control" asp-items="@Html.GetEnumSelectList<Currency>()"></select>
+            <input type="number" class="form-control" asp-for="Price.Amount">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Description"></label>
+        <input type="text" class="form-control" asp-for="Description">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block btn-with-loader" value="Paga l'ordine su Paypal"><img src="loading.svg"> Paga l'ordine su Paypal</button>
+</form>
